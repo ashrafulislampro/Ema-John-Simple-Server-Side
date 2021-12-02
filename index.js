@@ -67,7 +67,7 @@ client.connect(err => {
 
 
 app.get('/', (req, res) => {
-          res.send('Hello World WatSon')
-})
+          res.send('Hello World WatSon');
+});
 
-app.listen(port);
+app.listen(process.env.PORT || port);
