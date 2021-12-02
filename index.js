@@ -31,7 +31,6 @@ client.connect(err => {
           });
 
 
-
           app.post('/addOrder', (req, res) => {
                     const order = req.body;
                     console.log(order)
