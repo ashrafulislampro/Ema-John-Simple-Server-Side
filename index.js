@@ -9,8 +9,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-const port = 5000;
-console.log(process.env.DB_CONNECTED)
+const port = process.env.PORT || 5000;
 
 
 
@@ -43,7 +42,8 @@ client.connect(err => {
           });
 
           app.get('/products', (req, res) => {
-                    const search = req.query.searchProduct;
+                    const search = req.query.search;
+                    console.log(search)
                     collection.find({name : {$regex : search}})
                     .toArray((err, documents)=>{
                               res.send(documents);
@@ -71,4 +71,4 @@ app.get('/', (req, res) => {
           res.send('Hello World WatSon');
 });
 
-app.listen(process.env.PORT || port);
+app.listen(port);
